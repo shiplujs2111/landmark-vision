@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyUsRouteImport } from './routes/why-us'
 import { Route as VenturesRouteImport } from './routes/ventures'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -26,6 +27,11 @@ const WhyUsRoute = WhyUsRouteImport.update({
 const VenturesRoute = VenturesRouteImport.update({
   id: '/ventures',
   path: '/ventures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ventures': typeof VenturesRoute
   '/why-us': typeof WhyUsRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ventures': typeof VenturesRoute
   '/why-us': typeof WhyUsRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ventures': typeof VenturesRoute
   '/why-us': typeof WhyUsRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/news'
     | '/projects'
+    | '/sitemap.xml'
     | '/ventures'
     | '/why-us'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/news'
     | '/projects'
+    | '/sitemap.xml'
     | '/ventures'
     | '/why-us'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/news'
     | '/projects'
+    | '/sitemap.xml'
     | '/ventures'
     | '/why-us'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VenturesRoute: typeof VenturesRoute
   WhyUsRoute: typeof WhyUsRoute
 }
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/ventures'
       fullPath: '/ventures'
       preLoaderRoute: typeof VenturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   VenturesRoute: VenturesRoute,
   WhyUsRoute: WhyUsRoute,
 }
