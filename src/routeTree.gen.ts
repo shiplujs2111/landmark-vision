@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyUsRouteImport } from './routes/why-us'
+import { Route as VenturesRouteImport } from './routes/ventures'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WhyUsRoute = WhyUsRouteImport.update({
+  id: '/why-us',
+  path: '/why-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VenturesRoute = VenturesRouteImport.update({
+  id: '/ventures',
+  path: '/ventures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/news': typeof NewsRoute
+  '/projects': typeof ProjectsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ventures': typeof VenturesRoute
+  '/why-us': typeof WhyUsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/news': typeof NewsRoute
+  '/projects': typeof ProjectsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ventures': typeof VenturesRoute
+  '/why-us': typeof WhyUsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/news': typeof NewsRoute
+  '/projects': typeof ProjectsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ventures': typeof VenturesRoute
+  '/why-us': typeof WhyUsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/gallery'
+    | '/news'
+    | '/projects'
+    | '/sitemap.xml'
+    | '/ventures'
+    | '/why-us'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/gallery'
+    | '/news'
+    | '/projects'
+    | '/sitemap.xml'
+    | '/ventures'
+    | '/why-us'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/gallery'
+    | '/news'
+    | '/projects'
+    | '/sitemap.xml'
+    | '/ventures'
+    | '/why-us'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  NewsRoute: typeof NewsRoute
+  ProjectsRoute: typeof ProjectsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VenturesRoute: typeof VenturesRoute
+  WhyUsRoute: typeof WhyUsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why-us': {
+      id: '/why-us'
+      path: '/why-us'
+      fullPath: '/why-us'
+      preLoaderRoute: typeof WhyUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ventures': {
+      id: '/ventures'
+      path: '/ventures'
+      fullPath: '/ventures'
+      preLoaderRoute: typeof VenturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  NewsRoute: NewsRoute,
+  ProjectsRoute: ProjectsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VenturesRoute: VenturesRoute,
+  WhyUsRoute: WhyUsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
